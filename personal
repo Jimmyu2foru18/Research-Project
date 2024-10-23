@@ -1,0 +1,79 @@
+Step 1: Install Jupyter Notebook
+If you don’t have Jupyter Notebook installed, you can install it using pip. Open your command line (Command Prompt, Terminal, etc.) and run:
+
+bash
+Copy code
+pip install notebook
+Step 2: Start Jupyter Notebook
+Open your command line.
+
+Navigate to the directory where you want to save your notebook. For example:
+
+bash
+Copy code
+cd path/to/your/directory
+Start Jupyter Notebook by running:
+
+bash
+Copy code
+jupyter notebook
+This will open a new tab in your web browser with the Jupyter Notebook interface.
+
+Step 3: Create a New Notebook
+In the Jupyter interface, click on the “New” button on the right side.
+Select “Python 3” (or whichever version you have).
+Step 4: Add Your Code
+A new notebook will open. You'll see a cell where you can enter code.
+Copy the code snippets I provided earlier, and paste them into separate cells in the notebook.
+To create a new cell, click on the “+” button in the toolbar or go to “Insert” > “Insert Cell Below.”
+Step 5: Save Your Notebook
+After entering your code, click on the disk icon in the toolbar or press Ctrl + S (Windows/Linux) or Cmd + S (Mac) to save your notebook.
+Give your notebook a name, for example, github_repo_analysis.ipynb.
+Step 6: Running Cells
+To run a cell, click on the cell and then press Shift + Enter. This will execute the code in the cell and move to the next cell.
+Make sure to run the cells in order, starting from the imports and function definitions, before running the input and processing cells.
+Step 7: Exit Jupyter Notebook
+When you're done, you can close the browser tab.
+To stop the Jupyter Notebook server, go back to the command line where you started it and press Ctrl + C.
+Optional: Reopen Your Notebook Later
+To reopen your notebook later, just navigate to the directory where it’s saved and run jupyter notebook again.
+Click on your notebook file (e.g., github_repo_analysis.ipynb) to open it.
+Summary of Notebook Structure
+Your notebook should have the following structure:
+
+Cell 1: Install packages (if needed)
+
+python
+Copy code
+!pip install PyGithub dspy openai
+Cell 2: Import libraries and set up environment variables
+
+python
+Copy code
+import os
+import openai
+from github import Github
+import dspy
+
+github_token = os.getenv('GITHUB_TOKEN')  # Set your token here if not using env vars
+openai.api_key = os.getenv('OPENAI_API_KEY')  # Set your key here if not using env vars
+g = Github(github_token)
+Cell 3: Define functions
+
+python
+Copy code
+# Function definitions (search_repositories, fetch_repository_details, etc.)
+Cell 4: User input
+
+python
+Copy code
+keyword = input("Enter a keyword to search for GitHub repositories: ")
+keywords = input("Enter keywords to analyze in the README (comma-separated): ").split(',')
+keywords = [k.strip() for k in keywords]
+Cell 5: Search and process repositories
+
+python
+Copy code
+repos = search_repositories(keyword)
+for repo in repos:
+    process_repository(repo['full_name'], keywords)
